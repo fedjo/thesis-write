@@ -1,0 +1,86 @@
+\chapter{Εισαγωγή}\label{ch:introduction}
+
+Στις μέρες μας, η τεχνητή νοημοσύνη είναι ένας ταχύτατα αναπτυσσόμενος κλάδος
+της επιστήμης των υπολογιστών. Η όραση υπολογιστών είναι ένα επιστημονικό πεδίο
+της τεχνητής νοημοσύνης που δε θα μπορούσε να μείνει ανεπηρέαστο από αυτή την
+εξέλιξη.
+
+Η όραση των υπολογιστών (από και στο εξής ΟτΥ) ασχολείται με την απόκτηση,
+ανάλυση και κατανόηση εικόνων, βίντεο και γενικά πολυμεσικού περιεχομένου
+πολλών διαστάσεων από τον πραγματικό κόσμο. Έχει ως σκοπό να δώσει στα
+υπολογιστικά συστήματα μια εποπτεία και κατανόηση του τετραδιάστατου
+πραγματικού κόσμου.
+
+Για να επιτευχθεί ο άνωθεν σκοπός χρειάζεται να αυτοματοποιηθεί μέσω μιας
+υπολογιστικής αλγοριθμικής διαδικασίας η μέθοδος της ανθρώπινης όρασης. Έτσι
+η πραγματική ν-διάσταση αναπαράσταση που απεικονίζει και αναγνωρίζει ο
+ανθρώπινος εγκέφαλος, αναπαρίσταται με συμβολικό και αριθμητικό τρόπο.
+
+
+\section{Thesis motivation}
+
+In this thesis we will design, and study the performance impact of integrating a
+NoSQL database in a software used for managing clusters of physical nodes. The
+motivation behind this thesis emerged from concerns about the performance, and
+scalability requirements of \textbf{Ganeti}
+\flink{http://code.google.com/p/ganeti/}, a software tool used for the physical
+node management of a cluster, and the low level VM management as well. Ganeti is
+used from \textbf{Synnefo}~\flink{http://www.synnefo.org}, an open source cloud
+software used to create massively scalable IaaS clouds. \textbf{Synnefo}
+\cite{synnefo}, powers the \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}okeanos}
+public cloud service~\cite{okeanos}.
+\textbf{\raise.17ex\hbox{$\scriptstyle\sim$}okeanos} is an \emph{IaaS}, i.e.,
+\emph{Infrastructure as a Service}, that provides virtual machines, virtual
+networks and storage services to the Greek Academic and Research Community. It
+is an open-source service that has been running in production servers since
+2011, by GRNET S.A.~\flink{https://www.grnet.gr/}.
+
+Synnefo is a complete open source cloud stack written in Python, and has three
+main components providing the corresponding services:
+
+\begin{itemize}
+  \item \textbf{\emph{Cyclades}}, Compute/Network/Image/Volume services.
+  \item \textbf{\emph{Pithos}}, File/Object Storage services.
+  \item \textbf{\emph{Astakos}}, Identify/Account services.
+\end{itemize}
+
+Synnefo manages multiple Ganeti clusters at the backend for handling the
+low-level VM operations. As we mentioned previously, improving the performance
+and scalability of Ganeti, by testing it under alternative storage engines, and
+specifically \emph{CouchDB}~\flink{http://couchdb.apache.org/}, a NoSQL database
+system, was our motivation. In addition, a design document
+\flink{https://groups.google.com/forum/\#!topic/ganeti-devel/jLvStCCTZ2Q}, that
+was proposed a long time ago by \emph{Guido Trotter}, one of Ganeti's senior
+Engineers, amplified the conduction of this thesis.
+
+\section{Thesis structure}
+
+This thesis is organized in the following sections:
+
+\begin{description}
+  \item[Chapter~\ref{ch:background}:] \hfill \\
+    We provide all the necessary theoretical background for the concepts
+    discussed in this thesis.
+  \item[Chapter~\ref{ch:ganeti}:] \hfill \\
+    We present the architecture of Ganeti. A small documentation to facilitate
+    the reader with the most basic components of Ganeti, and how they interact
+    with each other.
+  \item[Chapter~\ref{ch:backend}:] \hfill \\
+    We analyze two of the basic components of Ganeti by providing more technical
+    details, and specifically the configuration data file and the job queue
+    components. We also examine the main factors that prevent Ganeti from
+    achieving better performance, and reduce its scalability capabilities. Next,
+    we discuss the main reasons we chosen CouchDB to provide solution to some of
+    those issues, and we make a quick presentation of its main features.
+    Finally, we explain in details the design of the CouchDB driver, along with
+    all the compromises we have to make during the implementation.
+  \item[Chapter~\ref{ch:performance}:] \hfill \\
+    We evaluate the performance of the CouchDB driver. We compare it with the
+    Ganeti's default filesystem approach, and we weight the pros and cons of
+    each implementation. Finally, we extensively explain the reasons behind the
+    differentiations that are arisen.
+  \item[Chapter~\ref{ch:conclusion}:] \hfill \\
+    We provide our conclusion remarks, and our thoughts about future work for
+    further improvements on the tool we designed, along with the final deduction
+    of our work.
+\end{description}

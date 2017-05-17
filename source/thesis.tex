@@ -1,0 +1,169 @@
+% DOCUMENT FORMAT ==============================================================
+
+\documentclass{ntua-thesis} % a4paper,11pt,twoside,titlepage already set
+% \pagestyle{plain} % pagestyle already set
+% \usepackage[margin=2.5cm]{geometry} % margins already set
+
+
+% PACKAGE SETTINGS =============================================================
+
+\usepackage[cm-default]{fontspec}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{courier}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{mdwlist}
+\usepackage{graphicx} % insert jpg/png pictures
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{polyglossia}
+\setmainlanguage{greek}
+\setotherlanguage{english}
+\newfontfamily\greekfont[Script=Greek]{CMU Serif}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+    xetex,
+    hyperfootnotes=true,
+    colorlinks=true,
+    pdfpagemode=UseOutlines,
+    pdfstartview=FitH,
+%    linkcolor=blue,
+%    citecolor=green,
+%    urlcolor=magenta,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdftitle={Αυτόματος Σχολιασμός Προσώπων και Αντικειμένων σε πολυμεσικό περιεχόμενο},
+    pdfauthor={Μαρινέλλης Γεώργιος},
+    pdfsubject={},
+    pdfkeywords={cloud computing, cloud, virtualization, virtual machine, NoSQL,
+        Ganeti, JSON, CouchDB, Synnefo, okeanos, replication, python, scaling,
+        throughput, cluster, node, instance, qemu, KVM, module, package, b+tree
+        structure, MVCC, ACID, CAP, views, daemons}
+}
+\usepackage{rotating}
+\usepackage[format=hang,textformat=simple]{caption}
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+\setromanfont[Mapping=tex-text]{CMU Serif}
+\setsansfont[Mapping=tex-text]{CMU Sans Serif}
+\setmonofont[Mapping=tex-text]{CMU Typewriter Text}
+\setmainfont[Mapping=tex-text]{CMU Serif}
+
+
+% CUSTOM COMMANDS ==============================================================
+\newcommand{\flink}[1]{\footnote{\url{#1}}}
+\newcommand{\todo}{\textrm{\textbf{\textcolor{yellow}{TODO: }}}}
+\newcommand{\fixme}{\textrm{\textbf{\textcolor[RGB]{255,0,0}{FIXME: }}}}
+\newcommand{\subscript}[1]{\ensuremath{{\textrm{#1}}}}
+% add color in footnote
+%\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\color{green}\@thefnmark}}}
+\newenvironment{fulltable}[3]{
+    \def\tempcaption{#2}
+    \def\templabel{#3}
+    \begin{table}[hbtp]
+    \begin{center}
+    \begin{tabular}[c]{#1}
+}{
+    \end{tabular}
+    \end{center}
+    \caption{\tempcaption\label{\templabel}}
+    \end{table}
+}
+%macro που δίνει το μέγιστο επιτρεπτό μέγεθος σε μια εικόνα χωρίς να
+%παραβιάζει τα όρια του LaTeX
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>\linewidth
+  \linewidth
+  \else
+  \Gin@nat@width
+  \fi
+}
+
+
+% CODE HIGHLIGHTING ============================================================
+
+%\usepackage{listings}
+% Count listings per chapter
+\usepackage[chapter]{minted}
+
+\newcommand{\includeminted}[5][python]{%
+  \nopagebreak
+  \inputminted[numbersep=5pt,frame=lines,framesep=2mm,#5]{#1}{#2}
+  \captionof{listing}{#3}
+  \label{#4}
+}
+
+% DOCUMENT INFORMATION =========================================================
+
+\title{Αυτόματος σχολιασμός Προσώπων και Αντικειμένων σε πολυμεσικό περιβάλλον}
+\author{Μαρινέλλης Γεώργιος}
+\thesis[του]{Μαρινέλλη Γεώργιου}
+\presenting{09}{04}{2016}
+\supervisor[Καθηγητής ]{Συμεών Παπαβασιλείου} % the space is necessary
+\epitropiF[Αν. Καθηγητής ]{Νικόλαος Παπασπύρου}
+\epitropiS[Επ. Καθηγητής ]{Δημήτριος Σούντρης}
+\department{Σχολή Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών}
+\division{Τομέας Τεχνολογίας Πληροφορικής και Υπολογιστών}
+\lab{Εργαστήριο Υπολογιστικών Συστημάτων}
+
+
+% MAIN DOCUMENT ================================================================
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\def\templen{\parindent}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.2ex}
+\include{abstract}
+
+\setlength{\parindent}{\templen}
+\setlength{\parskip}{0pt}
+\tableofcontents
+\listoffigures
+\listoftables
+\renewcommand\listoflistingscaption{List of Listings}
+\listoflistings
+% Fix the vertical spacing of listoflistings to look like the
+% listoffigures
+\makeatletter
+\let\my@chapter\@chapter
+\renewcommand*{\@chapter}{%
+  \addtocontents{lol}{\protect\addvspace{10pt}}%
+  \my@chapter}
+\makeatother
+% Due to unknown conflict between toc and minted, manualy add the Listings entry
+\addcontentsline{toc}{chapter}{List of Listings}
+
+\mainmatter
+% moved these two commands here so that they don't influence the toc
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.2ex}
+
+\renewcommand{\floatpagefraction}{.7}
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+
+\backmatter
+\cleardoublepage % start at the next odd page
+\phantomsection  % correct hyperlinking
+\addcontentsline{toc}{chapter}{\bibname} % add bibliography section to toc
+\bibliography{references}
+\bibliographystyle{abbrv} % plain/abbrv/alpha/abstract/apalike/...
+% \include{glossary}
+% \chapter{Appendix}
+% \printindex
+
+\end{document}

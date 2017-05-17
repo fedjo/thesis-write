@@ -1,0 +1,92 @@
+%% Greek Abstract
+\begin{greek}
+\begin{abstract}
+
+Στις μέρες μας, οι υποδομές Cloud Computing προσφέρουν ευελιξία, διαφάνεια, και
+ασφάλεια για την εκτέλεση ενός συνεχώς αυξανόμενου πλήθους εφαρμογών και
+υπηρεσιών. Οι υποδομές αυτές αποτελούνται κατά κανόνα από συστοιχίες υπολογιστών
+(clusters), χρησιμοποιώντας τεχνικές εικονοποίησης για να διαμοιράσουν τους
+φυσικούς πόρους σε εικονικούς, οι οποίοι θα χρησιμοποιηθούν από το cloud
+περιβάλλον. Οι πάροχοι των cloud υπηρεσιών, θέλουν οι υπηρεσίες τους να έχουν
+δυνατότητες κλιμάκωσης (scaling), και να λειτουργούν με χαμηλούς χρόνους
+απόκρισης (latency), ανεξαρτήτως του φόρτου των υπηρεσιών τους. Αρκετοί
+παράγοντες επηρεάζουν την απόδοση των cloud περιβαλλόντων, όπως το δίκτυο που
+χρησιμοποιείται για στη διασύνδεση των φυσικών πόρων, ή το υλικό που
+χρησιμοποιήθηκε για την υποδομή, όπως η CPU, η μνήμη, και ο δίσκος. Συνήθως,
+κάποιο εργαλείο λογισμικού αναλαμβάνει τη διαχείριση των κόμβων της συστοιχίας
+των υπολογιστών, όπως και την διαχείριση των εικονικών πόρων. Η παρούσα
+διπλωματική στοχεύει στη βελτίωση της απόδοσης ενός τέτοιου λογισμικού, και
+συγκεκριμένα του Ganeti, παρέχοντας υποστήριξη για εναλλακτικές μεθόδους που θα
+εξυπηρετούν τις απαιτήσεις του εργαλείου σε αποθηκευτικό χώρο. Η υλοποίησή μας,
+ενσωματώνει την CouchDB, μία NoSQL βάση διαχείρισης δεδομένων, χωρίς σχήμα, και
+προσανατολισμένη γύρω από έγγραφα στο Ganeti, και αξιολογεί την απόδοση του
+λογισμικού μετά από αυτή την τροποποίηση. Οι πρώτες μετρήσεις είναι ιδιαίτερα
+ενθαρρυντικές, καθώς παρουσιάζουν εμφανή βελτίωση στην απόδοση του Ganeti. Οι
+λόγοι αυτής της βελτίωσης θα παρουσιασθούν λεπτομερώς στη συνέχεια της παρούσας
+διπλωματικής.
+
+\begin{keywords}
+cloud computing, cloud, εικονοποίηση, εικονική μηχανή, NoSQL, Ganeti, JSON,
+CouchDB, Synnefo, okeanos, διαμοιρασμός, python, κλιμάκωση (scaling), απόδοση
+(throughput), συστοιχία (cluster), κόμβος, instance, qemu, KVM, module, πακέτο
+δομή b+δέντρου, MVCC, ACID, CAP, views, daemons
+\end{keywords}
+
+\end{abstract}
+\end{greek}
+
+%% English Abstract
+\begin{abstracteng}
+
+Nowadays, cloud computing exhibits agility, transparency, and security to the
+execution of a continuously increasing number of applications and services.
+Those infrastructures are designed on top of clusters of physical nodes, using
+virtualization techniques to appropriately separate the physical resources to
+create virtual dedicated ones, which will power the cloud environment. Cloud
+providers want their applications have the ability to scale, and operate in
+low-time latency, regardless of the load of the cloud services. Many factors
+affect the performance of those environments such as the network that is used
+for the intra-cluster communication, or the underlying hardware resources used,
+in terms of CPU, memory, and disk i/o. A software tool is commonly used that
+manages the physical nodes of the cluster, and the virtual resources as well.
+This thesis aims to improve the performance of such a tool, and specifically
+Ganeti's, by providing support for alternative engines to serve its storage
+requirements. Our design integrates CouchDB, a NoSQL, schema-less, and document
+oriented database in Ganeti, and evaluates the performance of the tool under
+the new storage layer. Early performance evaluations look very promising and
+show a noteworthy speedup on the performance of Ganeti, that will be discussed
+in details in the rest of the document.
+
+\begin{keywordseng}
+cloud computing, cloud, virtualization, virtual machine, NoSQL, Ganeti, JSON,
+CouchDB, Synnefo, okeanos, replication, python, scaling, throughput, cluster,
+node, instance, qemu, KVM, module, package, b+tree structure, MVCC, ACID, CAP,
+views, daemons
+\end{keywordseng}
+
+\end{abstracteng}
+
+%% Greek Acknowledgements
+\begin{greek}
+\begin{acknowledgements}
+
+Αρχικά, θα ήθελα να ευχαριστήσω τον αναπληρωτή καθηγητή κ. Νεκτάριο Κοζύρη για
+την ευκαιρία που μου έδωσε να ασχοληθώ με το συγκεκριμένο τομέα της επιστήμης
+των υπολογιστών στο Εργαστήριο Υπολογιστικών Συστημάτων, καθώς και για τη θετική
+συμβολή του καθόλη τη διάρκεια των σπουδών μου.
+
+Η εκπόνηση της διπλωματικής αυτής εργασίας, αποτελεί έμπνευση του διδάκτορα
+Ευάγγελου Κούκη, τον οποίο θα ήθελα να ευχαριστήσω θερμά τόσο για την βοήθειά
+του και τις συμβουλές του σε επίπεδο σχεδιασμού και υλοποίσης, όσο και για τις
+τεχνικές γνώσεις που μου μετέδωσε κατά τη διάρκειά της. Επίσης θα ήθελα να
+ευχαριστήσω ιδιαίτερα τον Χρήστο Σταυρακάκη για την συμβολή του και τις
+παρεμβάσεις του που βοήθησαν στην επίτευξη της διπλωματικής μου εργασίας.
+
+Τέλος ένα μεγάλο ευχαριστώ στην οικογένειά μου, για τη συνεχή τους στήριξη όλο
+αυτό το διάστημα των σπουδών μου, καθώς και στον κύκλο των φίλων μου για την
+ωραίες αναμνήσεις που μου προσφέρουν όλα αυτά τα χρόνια.
+
+\begin{flushright}Μαρινέλλης Γιώργος\end{flushright}
+
+\end{acknowledgements}
+\end{greek}
