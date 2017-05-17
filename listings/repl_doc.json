@@ -1,0 +1,10 @@
+{
+  _id : "rep_from_A_to_B",
+  source :  "http://aserver.com:5984/foo",
+  target :  "http://bserver.com:5984/foo_a",
+  create_target : true,
+  continuous :  true,
+  _replication_id :  "c0ebe9256695ff083347cbf95f93e280",
+  _replication_state :  "triggered",
+  _replication_state_time :  1297971311
+}

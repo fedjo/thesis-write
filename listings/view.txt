@@ -1,0 +1,5 @@
+function(doc) {
+  if(doc.date && doc.title) {
+    emit(doc.date, doc.title);
+  }
+}

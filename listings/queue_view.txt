@@ -1,0 +1,14 @@
+{ "_id" : "_design/queue_view",
+  "language" : "javascript",
+  "views" : {
+    "jobs" : {
+      "map" :
+        "function (doc) {
+          var q; q = doc._id.indexOf('_');
+          if ((doc._id != 'serial') && (doc._id != 'version') &&
+              (q != 0)) {
+            emit(doc._id, doc)
+         }}"
+     }
+   }
+ }

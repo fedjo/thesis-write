@@ -1,0 +1,45 @@
+{cluster: {'candidate_pool_size': 3,
+           'cluster_name': 'ganeti.cluster.com',
+           'default_iallocator': 'hail',
+                       . . .
+           'hvparams': { ... },
+           'master_ip': '192.168.0.206',
+           'master_netdev': 'eth0',
+           'master_node': 'node.example.com'}
+ instances:
+    {'inst1': {'admin_state': 'up',
+               'ctime': 1383218076.653934,
+               'disk_template': 'plain',
+               'hvparams': {'vnc_bind_address': '0.0.0.0'},
+               'hypervisor': 'kvm',
+               'name': 'inst_name',
+                           . . .
+               'nics': [{'mac': 'aa:00:00:60:23:f9', 'nicparams': {}}],
+               'os': 'snf-image+default',
+               'osparams': {'img_format': 'diskdump',
+                            'img_id': 'debian_base-7.0-1-x86_64',
+                             . . .
+                            }
+               'primary_node': 'node.example.com'}}
+ nodegroups:
+    {'default': {'alloc_policy': 'preferred',
+                 'name': 'default',
+                       . . .
+                 'uuid': '1c580c22-8a14-4f78-8416-0e0a7eac827f'}},
+ nodes: {'node.example.com':
+    {'ctime': 1380633061.361784,
+     'drained': False,
+     'group': '1c580c22-8a14-4f78-8416-0e0a7eac827f',
+     'master_candidate': True,
+     'master_capable': True,
+                . . .
+     'name': 'node.example.com',
+     'offline': False,
+     'primary_ip': '192.168.0.3',
+     'secondary_ip': '192.168.8.8',
+     'vm_capable': True},
+ networks : {},
+ ctime: 1380633038.861877,
+ mtime: 1383320564.876588,
+ serial_no: 10,
+ version: 2070000}

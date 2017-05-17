@@ -1,0 +1,10 @@
+{ "_id" : "_design/filter",
+  "language" : "javascript",
+  "filters" : {
+    "job_id" :
+      "function (doc, req) {
+        if (doc._id == req.query.id)
+        { return true; }
+        else { return false; }}"
+  }
+}

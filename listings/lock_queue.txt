@@ -1,0 +1,7 @@
+{
+  (0,  [exc/thread-Ex1, exc/thread-Ex2,
+        shr/thread-Sh1/thread-Sh2/thread-Sh3]),
+  (2,  [shr/thread-Sh4/thread-Sh5]),
+  (10, [exc/thread-Ex3]),
+  (33, [shr/thread-Sh6, exc/thread-Ex4, exc/thread-Ex5]),
+}

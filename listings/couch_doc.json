@@ -1,0 +1,10 @@
+{
+    _id : "couch_doc",
+    _rev : "4-33d3d5926a1986207dde6e9adc4c9006",
+    Type : "Contact",    
+    Name : "Name",
+    Email : [{"Home" : "foo@bar.net", "Work" : 'foo@bar-work.net'}],
+    Phone : [{"Home" : "+81 00 0000 0000"}],
+    Tags : ["foo", "bar", "foo-bar"]
+    Address : []
+}

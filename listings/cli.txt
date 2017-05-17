@@ -1,0 +1,7 @@
+$ gnt-cluster init \
+    --enabled-hypervisors=%hypervisors% \
+    --secondary-ip=%secondary_ip% \
+    --no-ssh-init \
+           . . .
+    --backend_storage=%disk|couchdb%
+    %CLUSTER_NAME%

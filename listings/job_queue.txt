@@ -1,0 +1,8 @@
+/var/lib/ganeti/queue/
+  job-1   (JSON encoded job description and status)
+  [...]
+  job-99
+  job-100
+  lock
+  serial
+  version
