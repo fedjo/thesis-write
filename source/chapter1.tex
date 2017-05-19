@@ -16,8 +16,20 @@
 η πραγματική ν-διάσταση αναπαράσταση που απεικονίζει και αναγνωρίζει ο
 ανθρώπινος εγκέφαλος, αναπαρίσταται με συμβολικό και αριθμητικό τρόπο.
 
+\section{Ανίχνευση προσώπων και αντικειμένων}
+Η ανίχνευση προσώπων και γενικότερα αντικειμένων σε μια εικόνα είναι μια
+καθημερινή, αυτοματοποιημένη και τετριμένη διαδικασία για τον άνθρωπο. Ο ανθρώπινος
+εγκέφαλος είναι εκπαιδευμένος με τέτοιο τρόπο ώστε να μπορεί να αναγνωρίζει
+αντικείμενα ακαριαία. Μάλιστα η αναγνώριση δεν αφορά δεν αφορά την αναγνώριση
+μεμονομένων και συγκεκριμένων αντικειμένων αλλά γενικότερα την αναγνώριση
+συγκεκριμένων κλάσεων αντικειμένων. Έτσι ο εγκέφαλός μας μπορεί να αναγνωρίζει
+αντικέιμενα χωρίς προηγουμένως να τα έχει δει. Αντίθετα όμως η διαδικασία αυτή
+δεν εκτελείται το ίδιο εύκολα και από ένα υπολογιστικό σύστημα.
 
-\section{Thesis motivation}
+
+\section{Αναγνώριση προσώπων}
+
+\section{Συνεισφορά της διπλωματικής}
 
 In this thesis we will design, and study the performance impact of integrating a
 NoSQL database in a software used for managing clusters of physical nodes. The
@@ -53,34 +65,35 @@ system, was our motivation. In addition, a design document
 was proposed a long time ago by \emph{Guido Trotter}, one of Ganeti's senior
 Engineers, amplified the conduction of this thesis.
 
-\section{Thesis structure}
+\section{Οργάνωση κειμένου}
 
 This thesis is organized in the following sections:
 
 \begin{description}
-  \item[Chapter~\ref{ch:background}:] \hfill \\
-    We provide all the necessary theoretical background for the concepts
-    discussed in this thesis.
-  \item[Chapter~\ref{ch:ganeti}:] \hfill \\
-    We present the architecture of Ganeti. A small documentation to facilitate
-    the reader with the most basic components of Ganeti, and how they interact
-    with each other.
-  \item[Chapter~\ref{ch:backend}:] \hfill \\
-    We analyze two of the basic components of Ganeti by providing more technical
-    details, and specifically the configuration data file and the job queue
-    components. We also examine the main factors that prevent Ganeti from
-    achieving better performance, and reduce its scalability capabilities. Next,
-    we discuss the main reasons we chosen CouchDB to provide solution to some of
-    those issues, and we make a quick presentation of its main features.
-    Finally, we explain in details the design of the CouchDB driver, along with
-    all the compromises we have to make during the implementation.
-  \item[Chapter~\ref{ch:performance}:] \hfill \\
-    We evaluate the performance of the CouchDB driver. We compare it with the
-    Ganeti's default filesystem approach, and we weight the pros and cons of
-    each implementation. Finally, we extensively explain the reasons behind the
-    differentiations that are arisen.
-  \item[Chapter~\ref{ch:conclusion}:] \hfill \\
-    We provide our conclusion remarks, and our thoughts about future work for
-    further improvements on the tool we designed, along with the final deduction
-    of our work.
+  \item[Κεφάλαιο~\ref{ch:objdetection}:] \hfill \\
+    Στο κεφάλαιο αυτό θα κάνουμε μια γενική επισκόπηση των μεθόδων που
+    χρησιμοποιούνται για την ανίχνευση αντικειμένων.
+  \item[Κεφάλαιο~\ref{ch:violajones}:] \hfill \\
+    Εδώ θα γίνει μια συνοπτική παρουσίαση του ανωτέρου αλγορίθμου καθώς
+    και ο τρόπος με τον οποίο τον χρησιμοποιήσαμε. Πρόκειται για τον αλγόριθμο
+    πάνω στον οποίο βασίζεται η ανίχνευση προσώπων στις εικόνες και συνεπακόλουθα
+    στα βίντεο. Θα συζητήσουμε πως σχετίζεται το αποτέλεσμα της μεθόδου με
+    την μετέπειτα αναγνώριση των προσώπων.
+  \item[Κεφάλαιο~\ref{ch:googlenet}:] \hfill \\
+    Θα παρουσιαστεί εδώ μια γενική επισκόπιση των νευρωνικών δικτύων. Θα συζητήσουμε
+    για το Caffe framework το οποίο υποστηρίζει την παραγωγή νευρωικών δικτύων
+    και τέλος θα μιλήσουμε για το πως χρησιμοποιούμε το ανωτέρο νευρωνικών
+    για να εξάγουμε σχολιασμούς για τις εικόνες και τα βίντεο.
+  \item[Κεφάλαιο~\ref{ch:facerec}:] \hfill \\
+    Γίνεται μια σύντομη παρουσίαση των μεθόδων που χρησιμοποιούνται για την
+    αναγνώριση προσώπων. Θα αναλύσουμε επίσης και τη δική μας τεχνική αναγνώρισης
+    και πως διαφοροποιείται από τις υπάρχουσες.
+  \item[Κεφάλαιο~\ref{ch:results}:] \hfill \\
+    Στο κομμάτι αυτό θα δούμε κάποια συγκριτικά αποτελέσματα των τεχνικών
+    εξαγωγής σχολιασμών. Θα αναλυθούν τα σημεία και οι λόγοι διαφοροποίησης
+    από άλλες μεθόδους και θα προταθούν τροποιήσεις που μπορούν να οδηγήσουν
+    σε ποιο εύστοχα αποτελέσματα.
+  \item[Κεφάλαιο~\ref{ch:conclusion}:] \hfill \\
+    Τέλος θα κάνουμε μια ανασκόπηση της διπλωματικής. Θα αναφερθούμε σε διάφορες
+    άλλες τεχνικές και θα γίνει μια πρόταση για παραπέρα έρευνα
 \end{description}
