@@ -23,36 +23,428 @@
     pages = {900--903}
 }
 
-@Inbook{Lienhart2003,
-author="Lienhart, Rainer
-    and Kuranov, Alexander
-    and Pisarevsky, Vadim",
-editor="Michaelis, Bernd
-    and Krell, Gerald",
-title="Empirical Analysis of Detection Cascades of Boosted Classifiers for Rapid Object Detection",
-bookTitle="Pattern Recognition: 25th DAGM Symposium, Magdeburg, Germany, September 10-12, 2003. Proceedings",
-year="2003",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="297--304",
-abstract="Recently Viola et al. have introduced a rapid object detection scheme
-based on a boosted cascade of simple feature classifiers. In this paper we
-introduce and empirically analysis two extensions to their approach:
-Firstly, a novel set of rotated haar-like features is introduced. These novel
-features significantly enrich the simple features of [6] and can also be
-calculated efficiently. With these new rotated features our sample face detector
-shows off on average a 10{\%} lower false alarm rate at a given hit rate.
-Secondly, we present a through analysis of different boosting algorithms (namely
-Discrete, Real and Gentle Adaboost) and weak classifiers on the detection
-performance and computational complexity. We will see that Gentle Adaboost with
-small CART trees as base classifiers outperform Discrete Adaboost and stumps.
-The complete object detection training and detection system as well as a trained
-face detector are available in the Open Computer Vision Library at sourceforge.net [8].",
-isbn="978-3-540-45243-0",
-doi="10.1007/978-3-540-45243-0_39",
-url="https://doi.org/10.1007/978-3-540-45243-0_39"
+@inbook{Lienhart2003,
+    author="Lienhart, Rainer
+        and Kuranov, Alexander
+        and Pisarevsky, Vadim",
+    title="Empirical Analysis of Detection Cascades of Boosted Classifiers for Rapid Object Detection",
+    bookTitle="Pattern Recognition: 25th DAGM Symposium, Magdeburg, Germany, September 10-12, 2003. Proceedings",
+    year="2003",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="297--304",
+    abstract="Recently Viola et al. have introduced a rapid object detection scheme
+    based on a boosted cascade of simple feature classifiers. In this paper we
+    introduce and empirically analysis two extensions to their approach:
+    Firstly, a novel set of rotated haar-like features is introduced. These novel
+    features significantly enrich the simple features of [6] and can also be
+    calculated efficiently. With these new rotated features our sample face detector
+    shows off on average a 10{\%} lower false alarm rate at a given hit rate.
+    Secondly, we present a through analysis of different boosting algorithms (namely
+    Discrete, Real and Gentle Adaboost) and weak classifiers on the detection
+    performance and computational complexity. We will see that Gentle Adaboost with
+    small CART trees as base classifiers outperform Discrete Adaboost and stumps.
+    The complete object detection training and detection system as well as a trained
+    face detector are available in the Open Computer Vision Library at sourceforge.net [8].",
+    isbn="978-3-540-45243-0",
+    doi="10.1007/978-3-540-45243-0_39",
+    url="https://doi.org/10.1007/978-3-540-45243-0_39"
 }
 
+@article{Viola2004,
+    author="Viola, Paul
+        and Jones, Michael J.",
+    title="Robust Real-Time Face Detection",
+    journal="International Journal of Computer Vision",
+    year="2004",
+    volume="57",
+    number="2",
+    pages="137--154",
+    abstract="This paper describes a face detection framework that is capable of
+    processing images extremely rapidly while achieving high detection rates. There
+    are three key contributions. The first is the introduction of a new image
+    representation called the Integral Image which allows the features used by our
+    detector to be computed very quickly. The second is a simple and efficient classifier
+    which is built using the AdaBoost learning algorithm (Freund and Schapire, 1995)
+    to select a small number of critical visual features from a very large set of
+    potential features. The third contribution is a method for combining classifiers
+    in a cascade which allows background regions of the image to be quickly discarded
+    while spending more computation on promising face-like regions. A set of
+    experiments in the domain of face detection is presented. The system yields face
+    detection performance comparable to the best previous systems
+    (Sung and Poggio, 1998; Rowley et al., 1998; Schneiderman and Kanade, 2000; Roth et al., 2000).
+    Implemented on a conventional desktop, face detection proceeds at 15 frames per second.",
+    issn="1573-1405",
+    doi="10.1023/B:VISI.0000013087.49260.fb",
+    url="https://doi.org/10.1023/B:VISI.0000013087.49260.fb"
+}
+
+
+@article{Friedman98additivelogistic,
+    author = {Jerome Friedman and Trevor Hastie and Robert Tibshirani},
+    title = {Additive Logistic Regression: a Statistical View of Boosting},
+    journal = {Annals of Statistics},
+    year = {1998},
+    volume = {28},
+    pages = {2000}
+}
+
+@article{schapire1998,
+    author = "Schapire, Robert E. and Freund, Yoav and Bartlett, Peter and Lee, Wee Sun",
+    doi = "10.1214/aos/1024691352",
+    journal = "Ann. Statist.",
+    month = "10",
+    number = "5",
+    pages = "1651--1686",
+    publisher = "The Institute of Mathematical Statistics",
+    title = "Boosting the margin: a new explanation for the effectiveness of
+                 voting methods",
+    url = "https://doi.org/10.1214/aos/1024691352",
+    volume = "26",
+    year = "1998"
+}
+
+@article{Rowley:1998:NNF:275341.275344,
+    author = {Rowley, Henry A. and Baluja, Shumeet and Kanade, Takeo},
+    title = {Neural Network-Based Face Detection},
+    journal = {IEEE Trans. Pattern Anal. Mach. Intell.},
+    volume = {20},
+    number = {1},
+    month = "1",
+    year = {1998},
+    issn = {0162-8828},
+    pages = {23--38},
+    url = {http://dx.doi.org/10.1109/34.655647},
+    doi = {10.1109/34.655647},
+    publisher = {IEEE Computer Society},
+    address = {Washington, DC, USA},
+    keywords = {Face detection, pattern recognition, computer vision, artificial neural networks, machine learning.},
+}
+
+@INPROCEEDINGS{Yang00asnow-based,
+    author = {Ming-hsuan Yang and Dan Roth and Narendra Ahuja},
+    title = {A SNoW-Based Face Detector},
+    booktitle = {Advances in Neural Information Processing Systems 12},
+    year = {2000},
+    pages = {855--861},
+    publisher = {MIT Press}
+}
+
+@INPROCEEDINGS{Roth98learningto,
+    author = {Dan Roth},
+    title = {Learning to resolve natural language ambiguities: A unified approach},
+    booktitle = {In Proceedings of the National Conference on Artificial Intelligence. 806-813. Segond F., Schiller A., Grefenstette and Chanod F.P},
+    year = {1998}
+}
+
+@article{Littlestone:1988:LQI:639961.639994,
+ author = {Littlestone, Nick},
+ title = {Learning Quickly When Irrelevant Attributes Abound: A New Linear-Threshold Algorithm},
+ journal = {Mach. Learn.},
+ issue_date = {April 1988},
+ volume = {2},
+ number = {4},
+ month = apr,
+ year = {1988},
+ issn = {0885-6125},
+ pages = {285--318},
+ numpages = {34},
+ url = {https://doi.org/10.1023/A:1022869011914},
+ doi = {10.1023/A:1022869011914},
+ acmid = {639994},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {Learning from examples, incremental learning, learning Boolean functions, linear-threshold algorithms, mistake bounds, prediction},
+}
+
+@workshop{CCRR99,
+    author = {A. Carlson and C. Cumby and J. Rosen and D. Roth},
+    title = {The SNoW Learning Architecture},
+    month = {5},
+    year = {1999},
+    number = {UIUCDCS-R-99-2101},
+    url = "http://cogcomp.org/papers/CCRR99.pdf",
+}
+
+@incollection{NIPS2012_4824,
+title = {ImageNet Classification with Deep Convolutional Neural Networks},
+author = {Alex Krizhevsky and Sutskever, Ilya and Hinton, Geoffrey E},
+booktitle = {Advances in Neural Information Processing Systems 25},
+editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+pages = {1097--1105},
+year = {2012},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}
+}
+
+@incollection{FaselMovellan,
+author = {R. Fasel, Ian and Movellan, Javier},
+year = {2002},
+month = {08},
+pages = {1325-1332},
+title = {A Comparison of Face Detection Algorithms}
+}
+
+@INPROCEEDINGS{7943228,
+author={K. Dang and S. Sharma},
+booktitle={2017 7th International Conference on Cloud Computing, Data Science Engineering - Confluence},
+title={Review and comparison of face detection algorithms},
+year={2017},
+volume={},
+number={},
+pages={629-633},
+keywords={face recognition;image classification;support vector machines;visual databases;DetEval software;SMQT features and SNOW classifier;Viola-Jones algorithm;bounding boxes;face analysis;face detection algorithms;face recognition;image database;intelligent systems;neural network-based face detection;support vector machine-based face detection;video database;Face;Face detection;Feature extraction;Neural networks;Object detection;Snow;Support vector machines;Face detection;Neural Network-Based Face Detection;Precision;Recall;SMQT Features and SNOW Classifier;Support Vector Machines-Based face detection;Viola-Jones face detector},
+doi={10.1109/CONFLUENCE.2017.7943228},
+ISSN={},
+month={Jan},}
+
+@ARTICLE{5255236,
+author={P. F. Felzenszwalb and R. B. Girshick and D. McAllester and D. Ramanan},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+title={Object Detection with Discriminatively Trained Part-Based Models},
+year={2010},
+volume={32},
+number={9},
+pages={1627-1645},
+keywords={data mining;iterative methods;object detection;object recognition;support vector machines;object detection system;discriminative trained part-based models;multiscale deformable part models;PASCAL object detection;margin-sensitive approach;data mining;latent SVM objective function;iterative training algorithm;object recognition;support vector machine;Object detection;Deformable models;Support vector machines;Bicycles;Computer vision;Shape;Speech recognition;Computer Society;Iterative algorithms;Lighting;Object recognition;deformable models;pictorial structures;discriminative training;latent SVM.;Algorithms;Artificial Intelligence;Discriminant Analysis;Image Enhancement;Image Interpretation, Computer-Assisted;Imaging, Three-Dimensional;Pattern Recognition, Automated;Reproducibility of Results;Sensitivity and Specificity},
+doi={10.1109/TPAMI.2009.167},
+ISSN={0162-8828},
+month={Sept},}
+
+@article{Papageorgiou:2000:TSO:355338.355341,
+ author = {Papageorgiou, Constantine and Poggio, Tomaso},
+ title = {A Trainable System for Object Detection},
+ journal = {Int. J. Comput. Vision},
+ issue_date = {June 2000},
+ volume = {38},
+ number = {1},
+ month = jun,
+ year = {2000},
+ issn = {0920-5691},
+ pages = {15--33},
+ numpages = {19},
+ url = {https://doi.org/10.1023/A:1008162616689},
+ doi = {10.1023/A:1008162616689},
+ acmid = {355341},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {computer vision, ear detection, face detection, machine learning, pattern recognition, people detection},
+}
+
+@misc{pascal-voc-2007,
+    author = "Everingham, M. and Van~Gool, L. and Williams, C. K. I. and Winn, J. and Zisserman, A.",
+    title = "The {PASCAL} {V}isual {O}bject {C}lasses {C}hallenge 2007 {(VOC2007)} {R}esults",
+    howpublished = "http://www.pascal-network.org/challenges/VOC/voc2007/workshop/index.html"}
+
+
+@inproceedings{liu2016ssd,
+  title = {{SSD}: Single Shot MultiBox Detector},
+  author = {Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
+  booktitle = {ECCV},
+  year = {2016}
+}
+
+@misc{darknet13,
+  author =   {Joseph Redmon},
+  title =    {Darknet: Open Source Neural Networks in C},
+  howpublished = {\url{http://pjreddie.com/darknet/}},
+  year = {2013--2016}
+}
+
+@INPROCEEDINGS{7780460,
+author={J. Redmon and S. Divvala and R. Girshick and A. Farhadi},
+booktitle={2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+title={You Only Look Once: Unified, Real-Time Object Detection},
+year={2016},
+volume={},
+number={},
+pages={779-788},
+keywords={image classification;image representation;neural nets;object detection;you only look once;unified real-time object detection;object classifiers;bounding boxes;class probabilities;neural network;detection pipeline;detection performance;YOLO model;object representation;DPM;R-CNN;natural images;Computer architecture;Microprocessors;Object detection;Training;Real-time systems;Neural networks;Pipelines},
+doi={10.1109/CVPR.2016.91},
+ISSN={1063-6919},
+month={June},}
+
+@article{DBLP:journals/corr/RedmonF16,
+  author    = {Joseph Redmon and
+                 Ali Farhadi},
+  title     = {{YOLO9000:} Better, Faster, Stronger},
+  journal   = {CoRR},
+  volume    = {abs/1612.08242},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1612.08242},
+  archivePrefix = {arXiv},
+  eprint    = {1612.08242},
+  timestamp = {Mon, 13 Aug 2018 16:48:25 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/RedmonF16},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{yolov3,
+  title={YOLOv3: An Incremental Improvement},
+  author={Redmon, Joseph and Farhadi, Ali},
+  journal = {arXiv},
+  year={2018}
+}
+
+@article{DBLP:journals/corr/DaiLHS16,
+  author    = {Jifeng Dai and
+                 Yi Li and
+                 Kaiming He and
+                 Jian Sun},
+  title     = {{R-FCN:} Object Detection via Region-based Fully Convolutional Networks},
+  journal   = {CoRR},
+  volume    = {abs/1605.06409},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1605.06409},
+  archivePrefix = {arXiv},
+  eprint    = {1605.06409},
+  timestamp = {Mon, 13 Aug 2018 16:46:21 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/DaiLHS16},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{DBLP:journals/corr/LinDGHHB16,
+  author    = {Tsung{-}Yi Lin and
+                 Piotr Doll{\'{a}}r and
+                 Ross B. Girshick and
+                 Kaiming He and
+                 Bharath Hariharan and
+                 Serge J. Belongie},
+  title     = {Feature Pyramid Networks for Object Detection},
+  journal   = {CoRR},
+  volume    = {abs/1612.03144},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1612.03144},
+  archivePrefix = {arXiv},
+  eprint    = {1612.03144},
+  timestamp = {Mon, 13 Aug 2018 16:48:50 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/LinDGHHB16},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@ARTICLE{6133291,
+author={B. Alexe and T. Deselaers and V. Ferrari},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+title={Measuring the Objectness of Image Windows},
+year={2012},
+volume={34},
+number={11},
+pages={2189-2202},
+doi={10.1109/TPAMI.2012.28},
+ISSN={0162-8828},
+month={Nov},}
+
+@INPROCEEDINGS{6126456,
+author={K. E. A. van de Sande and J. R. R. Uijlings and T. Gevers and A. W. M. Smeulders},
+booktitle={2011 International Conference on Computer Vision},
+title={Segmentation as selective search for object recognition},
+year={2011},
+volume={},
+number={},
+pages={1879-1886},
+keywords={image segmentation;object recognition;search problems;segmentation;selective search;object recognition;exhaustive search;bag-of-words method;Image segmentation;Image color analysis;Support vector machines},
+doi={10.1109/ICCV.2011.6126456},
+ISSN={2380-7504},
+month={Nov},}
+
+@ARTICLE{6544186,
+author={I. Endres and D. Hoiem},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+title={Category-Independent Object Proposals with Diverse Ranking},
+year={2014},
+volume={36},
+number={2},
+pages={222-234},
+keywords={graph theory;image segmentation;learning (artificial intelligence);category-independent object proposals;diverse ranking;top-ranked regions;graph cuts;seed region;learned affinity function;structured learning;Berkeley segmentation data set;Pascal VOC 2011;Proposals;Image segmentation;Object recognition;Image color analysis;Training;Shape;Layout;Object segmentation;object recognition;Algorithms;Artificial Intelligence;Image Enhancement;Image Interpretation, Computer-Assisted;Pattern Recognition, Automated;Reproducibility of Results;Sensitivity and Specificity},
+doi={10.1109/TPAMI.2013.122},
+ISSN={0162-8828},
+month={Feb},}
+
+@article{Everingham:2015:PVO:2725268.2725369,
+ author = {Everingham, Mark and Eslami, S. M. and Gool, Luc and Williams, Christopher K. and Winn, John and Zisserman, Andrew},
+ title = {The Pascal Visual Object Classes Challenge: A Retrospective},
+ journal = {Int. J. Comput. Vision},
+ issue_date = {January   2015},
+ volume = {111},
+ number = {1},
+ month = jan,
+ year = {2015},
+ issn = {0920-5691},
+ pages = {98--136},
+ numpages = {39},
+ url = {http://dx.doi.org/10.1007/s11263-014-0733-5},
+ doi = {10.1007/s11263-014-0733-5},
+ acmid = {2725369},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {Benchmark, Database, Object detection, Object recognition, Segmentation},
+}
+
+@article{DBLP:journals/corr/RussakovskyDSKSMHKKBBF14,
+  author    = {Olga Russakovsky and
+                 Jia Deng and
+                 Hao Su and
+                 Jonathan Krause and
+                 Sanjeev Satheesh and
+                 Sean Ma and
+                 Zhiheng Huang and
+                 Andrej Karpathy and
+                 Aditya Khosla and
+                 Michael S. Bernstein and
+                 Alexander C. Berg and
+                 Fei{-}Fei Li},
+  title     = {ImageNet Large Scale Visual Recognition Challenge},
+  journal   = {CoRR},
+  volume    = {abs/1409.0575},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1409.0575},
+  archivePrefix = {arXiv},
+  eprint    = {1409.0575},
+  timestamp = {Mon, 13 Aug 2018 16:48:19 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/RussakovskyDSKSMHKKBBF14},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@Article{UijlingsIJCV2013,
+  author       = "Uijlings, J. R. R. and van de Sande, K. E. A. and Gevers, T. and Smeulders, A. W. M.",
+  title        = "Selective Search for Object Recognition",
+  journal      = "International Journal of Computer Vision",
+  number       = "2",
+  volume       = "104",
+  pages        = "154--171",
+  year         = "2013",
+  url          = "https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013",
+  pdf          = "https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf",
+  has_image    = 1
+}
+
+@INPROCEEDINGS{6909816,
+author={M. Cheng and Z. Zhang and W. Lin and P. Torr},
+booktitle={2014 IEEE Conference on Computer Vision and Pattern Recognition},
+title={BING: Binarized Normed Gradients for Objectness Estimation at 300fps},
+year={2014},
+volume={},
+number={},
+pages={3286-3293},
+keywords={gradient methods;image colour analysis;object detection;BING;binarized normed gradients;objectness estimation;generic objectness measure;object windows;sliding window object detection paradigm;image windows;PASCAL VOC 2007 dataset;color spaces;Proposals;Training;Object detection;Feature extraction;Image color analysis;Detectors;Vectors;Objectness;proposals;detection;saliency;visual attention;realtime;binary coding},
+doi={10.1109/CVPR.2014.414},
+ISSN={1063-6919},
+month={June},}
+
+@ARTICLE{6095566,
+author={J. Carreira and C. Sminchisescu},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+title={CPMC: Automatic Object Segmentation Using Constrained Parametric Min-Cuts},
+year={2012},
+volume={34},
+number={7},
+pages={1312-1328},
+keywords={feature extraction;image segmentation;automatic object segmentation;CPMC;constrained parametric min-cut problems;objects spatial extent;bottom-up computational processes;mid-level selection cues;figure-ground segmentations;image grid;maximum marginal relevance;segmentation-based visual object category recognition pipeline;image segmentation;Image segmentation;Image edge detection;Image color analysis;Detectors;Object recognition;Object segmentation;Shape;Image segmentation;figure-ground segmentation;learning.},
+doi={10.1109/TPAMI.2011.231},
+ISSN={0162-8828},
+month={July},}
+
+[download]
 
 ================================================================================
 

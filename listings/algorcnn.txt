@@ -1,0 +1,5 @@
+feature_maps = process(image)
+ROIs = region_proposal(feature_maps)
+for ROI in ROIs
+    patch = roi_align(feature_maps, ROI)
+    results = detector2(patch)

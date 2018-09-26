@@ -1,0 +1,2 @@
+feature_maps = process(image)
+results = detector3(feature_maps) # Χωρίς επιπλέον βήμα για τα ROIs

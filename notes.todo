@@ -11,12 +11,13 @@
 Κεφ 1, Ανίχνευση προσώπων με τον αλγόριθμο Viola-Jones:
     - [ ] Συνοπτική παρουσίαση μεθόδων
         - PCA (Principal component Analysis)
-        - Viola Jones
         - Edge Orientation
         - Hausdorff distance method
         - Model based face tracking
-    - [ ] Haar Cascades
     - [ ] Η μέθοδος Viola-Jones
+        - [ ] Haar features
+        - [ ] AdaBoost
+        - [ ] Cascade Classifier
     - [ ] Άλλες μέθοδοι;
 
 Κεφ 2, Ανίχνευση αντικειμένων χρησιμοποιώντας το νευρωνικό δίκτυο GoogLeNet
