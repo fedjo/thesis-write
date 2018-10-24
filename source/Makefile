@@ -47,6 +47,6 @@ distclean: clean
 
 spellcheck:
 	for file in *.tex ; do \
-		aspell -t check $$file ; \
+		aspell -d el -t check $$file ; \
 	done
 	aspell -d el -t check abstract.tex

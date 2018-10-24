@@ -13,6 +13,7 @@
 .*
 *.swp
 *~
+*.bak
 
 # git files that we don't want to ignore #
 ##########################################
@@ -20,7 +21,7 @@
 
 # auxilary temp and pyc files #
 ###############################
-
+*.pyc
 
 # Tex related files #
 #####################
@@ -42,3 +43,8 @@
 ########################
 *.nav
 *.snm
+
+# PDFs and PNGs #
+# ###############
+*.pdf
+*.csv

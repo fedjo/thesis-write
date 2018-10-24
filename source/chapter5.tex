@@ -1,164 +1,173 @@
 \chapter{Ανάλυση αποτελεσμάτων}\label{ch:results}
 
-\section{Concluding remarks}\label{sec:remarks}
 
-This thesis described the design decisions, the technical-issues, and the
-implementation details for replacing the Ganeti configuration and job queue
-storage engine with CouchDB, a distributed document-oriented database. The goal
-of this thesis was to examine if it was \emph{feasible} to integrate a NoSQL
-database system in Ganeti, and measure the \emph{efficiency} of this approach.
+\section{Υλοποίηση}\label{sec:implementation}
+H υλοποίηση της μεθόδου k-Nearest Neighbor έγινε στη γλώσσα \texttt{C++} και πραγματοποιήθηκε
+ως προσθήκη στην υπάρχουσα υλοποίηση της μεθόδου από τη βιβλιοθήκη \texttt{OpenCV} \flink{https://opencv.org}.
+Για την μεταγλώττιση του κώδικα και την παραγωγή των εκτελέσιμων αρχείων χρησιμοποιήθηκε
+ο μεταγλωττιστής \texttt{g++} με έκδοση \texttt{4:6.3.0-4} σε περιβάλλον \texttt{Debian Stretch Linux}.
+Η πειραματική διάταξη υλοποιήθηκε στη γλώσσα \texttt{Python2.7} χρησιμοποιώντας
+τους \texttt{python wrappers} της OpenCV. Όλα τα πειράματα εκτελέστηκαν σε υπολογιστή
+\texttt{Intel(R) Core(TM) i7-2640M CPU @ 2.80GHz} χωρίς χρήση GPU. Για την αξιολόγηση
+χρησιμοποιήθηκε το σύστημα της \texttt{k-fold Cross Validation}\flink{https://en.wikipedia.org/wiki/Cross-validation_(statistics)}.
 
-After introducing the necessary theoretical background information about
-Ganeti and all the related fields of interest, we presented the main drawbacks
-that Ganeti appears, and the options that were evaluated to chose a NoSQL
-system, and specifically CouchDB, to provide a solution to some of those issues.
-We continued with the design and implementation details of the new storage
-choice, and finally we evaluated our solution, in regard to two broad
-dimensions: performance, and scalability potentials. Special attention was given
-on being fully compliant with the current Ganeti requirements, such as
-maintaining the fault-tolerant attribute by putting the safety of the data
-first, security, and mainly not intervening with the parts of the Ganeti code
-that are not related with our implementation.
 
-Looking back at what we have created, we can say that we also covered another
-need of Ganeti. The modular approach we followed for our design, supports both
-CouchDB and file configuration as different storage engines, with different
-limitations for each case. The current storage options can be easily extended
-due to the transformation that we made to the base configuration modules, and we
-could provide support for additional engines, such as MongoDB, or any other
-option that would fit the requirements of Ganeti. As far as the implementation
-complexity of the abstraction of some modules is concerned, we agree that we
-introduced an important amount of transformations to the code, but taking into
-account the extra features it introduces, and the fact that the code base is
-quite clear and straightforward, we can state that the benefits are greater than
-the cons, and the implementation can be consider \emph{successful}.
-
-Benchmark results were quite promising. Both the storage engines have been
-tested under various use cases and workloads. We measure the performance using
-a variety of metrics which we believe that correspond to a real-world
-environment. We have also studied the reasons that we consider responsible for
-the differentiations that appeared in the performance of the two engines. Based
-on this examination, we conclude that there are good indications that the NoSQL
-approach will be able to give extra choices and provide additional support, to
-the single storage solution which is currently used by Ganeti.
-
-We admit that there are more factors we should consider before trying this new
-approach to a real production environment. Since we are only in the first
-version of the CouchDB driver, and since some of the limitations we presented
-are fixed as of writing this chapter, and also considering the important
-performance gains we observed, we strongly believe that this work can become the
-basis for further work, and give the motivation for focusing on different
-approaches for the Ganeti storage engine. A further integration of this design
-in a demo environment, will help us gain the desirable feedback for more
-improvements, and perhaps will provide us the basis for new ideas and feature
-extensions.
-
-\section{Future work}\label{sec:future}
-
-The development of our implementation is far from over, as the tool has a lot of
-room for further improvements. Our tasks for the future, on some of which we are
-currently working on, will be classified into two separate categories. The
-short-term goals, and the long-term ones, which are the following:
-
-\subsection{Short-term plans}
-
-This section, mainly contains improvements of the current implementation, and
-the extension of the existing functionality.
+\section{Πειραματική μεθοδολογία}\label{sec:methodology}
+\subsection{Βάσεις δεδομένων}
+Για τις μετρήσεις χρησιμοποιήθηκαν οι βάσεις δεδομένων προσώπων \texttt{AT\&T Facedatabase}
+\flink{www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html},
+\texttt{Yale Facedatabase A}\flink{vision.ucsd.edu/content/yale-face-database},
+\texttt{Extended Yale Facedatabase B}\flink{http://vision.ucsd.edu/~leekc/ExtYaleDatabase/ExtYaleB.html}
+καθώς και μια βάση κατασκευασμένη από το συγγραφέα με βάση κάποιο πολυμεσικό πειραματικό
+υλικό που δόθηκε από το Πανεπιστήμιο του Lucce\flink{https://www.imtlucca.it/}.
 
 \begin{description}
-  \item[Fixing configuration ACID issue] \hfill \\
-    In Section~\ref{sec:couch_details}, we discussed an issue that arisen from
-    the transformation of the \texttt{config.data} file management. It is
-    our primary priority dealing with this irregularity, and provide an
-    efficient solution that will fix that issue, without affecting the overall
-    performance of the tool.
-  \item[Verification of the replication process] \hfill \\
-    Currently, we do not make any kind of verification checks on the replication
-    process. We do not have a way to ensure if a modification reached a majority
-    of the candidate nodes, but we are based on the CouchDB server integrity.
-    CouchDB will replicate, and all files will reach their destinations, as
-    long as the server is running. We would like an external to Ganeti process,
-    verify the status of the CouchDB instances, and warn the user for a possible
-    failure. The current \texttt{ganeti-watcher} script, is a possible candidate
-    that can be extended to provide the desired functionality, but more
-    solutions can be discussed.
-  \item[Improving the ssconf\_* management] \hfill \\
-    Ganeti maintains the \texttt{ssconf\_*} set of files in all the nodes of the
-    cluster. As a result, in an operation that modifies one or more of those
-    files, the cost of applying the changes among the nodes of the cluster is
-    aggregated. This cost is not negligible, and is one of the reasons that
-    forbids Ganeti from scale. We could also add those files to the CouchDB
-    server in a separate database called \texttt{ssconf}, and share this
-    information only among the candidate nodes. Since, every node needs to have
-    access to those files, we could give write permissions to the master node,
-    while the rest nodes will only have read permissions to the database. It is
-    an important performance fix which is intended to be applied soon.
-  \item[Import all cluster information] \hfill \\
-    Currently, CouchDB hosts only the job queue, the archive directory, and the
-    \texttt{config.data} file. The rest Ganeti information, such as the SSL
-    certificates, the daemon related keys, or the abovementioned
-    \texttt{ssconf\_*} set of files, continues to be stored in the filesystem.
-    We would like to import all those information in the CouchDB server, as
-    well.
-  \item[Backups for disaster-recovery] \hfill \\
-    Ganeti keeps a backup for the configuration data file, as soon as a node is
-    demoted from the master candidate role. CouchDB does not follow with this
-    requirement. The code will be converted to follow that requirement, and
-    subsequently it may be extended to keep flat backup files periodically, to
-    add an extra layer of protection from hardware failures.
+  \item[AT\&T Facedatabase] \hfill \\
+    Η βάση AT\&T Facedatabase περιέχει 10 διαφορετικές εικόνες για 40 διαφορετικά
+    πρόσωπα. Για κάποια πρόσωπα οι εικόνες έχουν συλλεχθεί σε διάφορες χρονικές
+    στιγμές, με ανομοιόμορφες συνθήκες φωτισμού και διαφορετικές εκφράσεις (χαμόγελο,
+    ανοιχτά/κλειστά μάτια) και χαρακτηριστικά (πχ γυαλιά). Σε όλες τις εικόνες υπάρχει
+    ομοιόμορφο μαύρο φόντο.
+  \item[Yale Facedatabase A] \hfill \\
+    Περιέχει 15 πρόσωπα και 11 ασπρόμαυρες φωτογραφίες για το καθένα από αυτά.
+    Οι εικόνες έχουν μέγεθος $320x243$ pixel ενώ υπάρχουν διαφοροποιήσεις στις
+    συνθήκες φωτισμού, στις εκφράσεις του προσώπου και τα χαρακτηριστικά. Στη
+    βιβλιογραφία θεωρείτε πιο αξιόπιστη από την παραπάνω.\\
+    \\
+    Οι εικόνες των προσώπων των δύο αυτών βάσεων δεν είναι στις ακριβείς διαστάσεις
+    των προσώπων και χρειάζονται μια προ-επεξεργασία για να μπορέσουν να αξιοποιηθούν.
+  \item[Extended Yale Facedatabase B] \hfill \\
+    Η βάση αυτή περιέχει 2414 εικόνες από 38 διαφορετικά πρόσωπα κομμένες ακριβώς
+    στις διαστάσεις του κάθε προσώπου. Ο στόχος της βάσης είναι να μπορούν να εξαχθούν
+    χαρακτηριστικά των προσώπων ανθεκτικά στις αλλαγές του φωτισμού. Για το λόγο αυτό
+    όλα τα πρόσωπα έχουν σχεδόν τις ίδιες εκφράσεις και χαρακτηριστικά.
+  \item[LucceFaces] \hfill \\
+    Η βάση αυτή περιέχει 10 εικόνες για κάθε ένα από τα 12 πρόσωπα που περιέχει.
+    Οι εικόνες των προσώπων εξήχθησαν από πραγματικό πολυμεσικό περιεχόμενο. Είναι
+    μια βάση προσώπων για την αξιολόγηση του συγκεκριμένου dataset.
 \end{description}
 
-\subsection{Long-term plans}
+\subsection{Πρωτόκολλο αξιολόγησης}
+Για την αξιολόγηση ενός αλγορίθμου αναγνώρισης προσώπων χρειάζεται να διαθέτουμε δύο
+βάσεις δεδομένων εικόνων. Μια που να αποτελεί τη βάση με την οποία εκπαιδεύεται η
+μέθοδος και μία πάνω στην οποία να εκτελείται. Το σχήμα που ακολουθήθηκε παρήγαγε
+και τις δύο βάσεις από τις παραπάνω χρησιμοποιώντας την τεχνική Cross-validation\flink{https://en.wikipedia.org/wiki/Cross-validation_(statistics)}
+Η μέθοδος εκτελείται $n$ επαναλήψεις  και σε κάθε μία αξιολογείται από τη μέθοδο
+αξιολόγησης k-fold Cross-validation. Στο σύνολο των επαναλήψεων υπολογίζεται
+η μέση ακρίβεια (accuracy). Η υλοποίηση της μεθόδου δίνει μία πρόβλεψη για κάθε
+πρόσωπο η οποία είτε είναι σωστή (true positive) είτε λάθος (false positive).
+Σε κάθε περίπτωση δεν έχουμε καθόλου true negatives και false negatives. Επομένως
+στη συγκεκριμένη περίπτωση το μέτρο \textbf{\texttt{Accuracy}} που υπολογίζουμε ταυτίζεται με το \texttt{Precision}
+ενώ το \texttt{Recall} θα παραμένει πάντα σταθερό και ίσο με 1. Το Precision και
+το Recall είναι οι τυπικές μετρικές για την αξιολόγηση αλγορίθμο που πραγματοποιούν
+ταξινόμηση κλάσης.
 
-This section contains our thoughts about extending Ganeti, improving its
-overall performance, and its ability to scale better in bigger clusters.
+$$
+Precision = \frac{tp}{tp + fp}
+$$
 
-\begin{description}
-  \item[Improving candidate pool management] \hfill \\
-    At this point, the CouchDB driver does not affect the management of the
-    candidate nodes. Each node in the cluster has a running CouchDB server. As
-    soon as a node is marked as candidate, the master node will extend its
-    replication tasks to include this node as well. We are currently discussing
-    another approach of managing the pool of candidate nodes. We could keep a
-    set of hosts, even independent to Ganeti, that will be used for the
-    candidate pool requirements only. These hosts will contain the live cluster
-    configuration and the job queue information, which they will be shared. The
-    master node will interact with those databases to store the cluster
-    information, removing the requirement of maintaining the candidate pool
-    exclusively inside Ganeti nodes. Using \emph{Solid State Drives (SSDs)}
-    in that small set of nodes is more feasible than in a whole cluster, and it
-    will be really handy for CouchDB.
-  \item[Clustering support] \hfill \\
-    The above idea can be amplified by the clustering techniques that the NoSQL
-    systems provide. Since the NoSQL systems are designed to serve large data
-    sets, some additional features are introduced to provide redundancy and
-    high-availability in any case. Clustering and auto-sharding are some of
-    those features, that provide the ability to the NoSQL systems to store and
-    share data across multiple machines, using efficient algorithms for handling
-    the read/write requests, and support the data growth demands. Currently,
-    CouchDB supports clustering using external applications such as
-    \emph{CouchDB Lounge}~\flink{http://tilgovi.github.io/couchdb-lounge/}. The
-    merge of CouchDB that was announced with BigCouch, a Cloudant's clustered
-    version of CouchDB, will bring soon all the clustering capabilities that
-    currently CouchDB lacks of. Besides the facilitation in handling the set
-    of candidate nodes, since they will be part of the cluster, with BigCouch
-    merged in, CouchDB and Ganeti consequently will be able to replicate data at
-    a much larger scale.
-  \item[Extending storage choices] \hfill \\
-    Abstracting the related to the storage management code of Ganeti, was our
-    number one priority. We made it feasible to easily create additional storage
-    engines for Ganeti. Moreover, the similarity among the NoSQL family that
-    exists, can be exploited to design new driver solutions, such as
-    \texttt{MongoDB}~\flink{http://www.mongodb.org/}, compare their performance,
-    and generally having the ability to choose among several storage options
-    according to our application's needs.
-  \item[Improving lock congestion] \hfill \\
-    The NoSQL systems are using their own locking policy. CouchDB uses the
-    \texttt{MVCC} method to handle read and write requests. MongoDB
-    uses a \texttt{readers-writer}, or \texttt{shared exclusive} per
-    database lock, to deal with concurrent readers and writers. We could improve
-    the current locking situation and be based on the locking level layer
-    providing by the NoSQL systems. The \texttt{ConfigWriter}, and the queue
-    level lock are the first contenders to be removed, since any serialization
-    to accessing the configuration file and the job queue would be unnecessary.
-\end{description}
+$$
+Recall = \frac{tp}{tp + fn}
+$$
+
+
+\paragraph{k-fold Cross Validation} \hspace*{3pt}\\
+\\
+Με τη μέθοδο αυτή χτίζονται k μη επικαλυπτόμενα σετ εκπαίδευσης και πειραματισμού
+από την αρχική βάση δεδομένων. Έτσι αποφεύγονται συνθήκες όπου ολόκληρη η μέθοδος
+είναι εκπαιδευμένη με χαρούμενα πρόσωπα ενώ το σετ εικόνων που χρησιμοποιείται στα
+πειράματα περιέχει λυπημένα πρόσωπα. Παρακάτω παρουσιάζεται ένα μικρό παράδειγμα της
+μεθόδου 4-fold Cross Validation:
+
+\newpage
+
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.8\maxwidth]{../figures/kfold.png}
+    \caption{Η μέθοδος k-fold Cross Validation \label{fig:rcnn}}
+   \end{center}
+\end{figure}
+
+Παρατηρούμε ότι σε κάθε επανάληψη (fold) επιλέγονται καινούργια και ανεξάρτητα
+σετ εκπαίδευσης και πειραματισμού.
+
+Η ακρίβεια που υπολογίζεται είναι ο μέσος όρος των τιμών της ακρίβειας που
+υπολογίζονται σε κάθε fold.
+
+
+\section{Αποτελέσματα}\label{sec:results}
+
+Με βάση τα χαρακτηριστικά (αριθμός προσώπων και εικόνες) των βάσεων δεδομένων
+που χρησιμοποιήσαμε επιλέξαμε να αξιολογήσουμε τη μέθοδο με \textbf{4-fold} και
+\textbf{10-fold} cross validation για μεγαλύτερη αξιοπιστία στα αποτελέσματα.
+
+Αξιολογήσαμε την τροποποιημένη μέθοδο για διαφορετικές τιμές του \textbf{k} και
+για 3 διαφορετικά είδη αποστάσεων, την τυπική \textbf{Eucledian} απόσταση, την
+\textbf{ChiSquare} και την \textbf{Cosine} απόσταση. Παρακάτω φαίνονται τα πειράματα
+για τις 4 βάσεις δεδομένων.
+
+Δίνονται οι ορισμοί των αποστάσεων:
+
+\texttt{Ευκλείδεια απόσταση}
+$$
+d(H_1, H_2) = \sqrt{H_1^2 + H_1^2}
+$$
+
+\texttt{Chisquare απόσταση}
+$$
+d(H_1, H_2) = \sum{\frac{(H_1-H_2)^2}{H_1+H_2}}
+$$
+
+\texttt{Cosine απόσταση}
+$$
+d(H_1, H_2) = -\frac{H_1^T*H_2}{\sqrt{(H_1*H_1^T)x(H_2*H_2^T))}}
+$$
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.49\textwidth]{../figures/k4-att.pdf}\hfill
+    \includegraphics[width=.49\textwidth]{../figures/k4-yaleA.pdf}\hfill
+    \includegraphics[width=.48\textwidth]{../figures/k4-yaleB.pdf}\hfill
+    \includegraphics[width=.48\textwidth]{../figures/k4-lucce.pdf}\hfill
+
+    \caption{k-4 cross validation}
+    \label{fig:bee}
+
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.49\textwidth]{../figures/k10-att.pdf}\hfill
+    \includegraphics[width=.49\textwidth]{../figures/k10-yaleA.pdf}\hfill
+    \includegraphics[width=.48\textwidth]{../figures/k10-yaleB.pdf}\hfill
+    \includegraphics[width=.48\textwidth]{../figures/k10-lucce.pdf}\hfill
+
+    \caption{k-10 cross validation}
+    \label{fig:bee}
+
+\end{figure}
+
+Επίσης για διαφορετικές τιμές του \textbf{k} συγκρίναμε τη μέθοδό μας για την
+τυπική Ευκλείδεια απόσταση και την Chisquare (που φαίνεται να υπερτερεί) με τη μέθοδο
+\textbf{FisherFaces} ως τον εξαγωγέα των χαρακτηριστικών από το πρόσωπο.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.49\textwidth]{../figures/k4-att-comp.pdf}\hfill
+    \includegraphics[width=.49\textwidth]{../figures/k4-yaleA-comp.pdf}\hfill
+
+    \caption{k-4 cross validation}
+    \label{fig:bee}
+
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.49\textwidth]{../figures/k10-att-comp.pdf}\hfill
+    \includegraphics[width=.49\textwidth]{../figures/k10-yaleA-comp.pdf}\hfill
+
+    \caption{k-10 cross validation}
+    \label{fig:bee}
+
+\end{figure}

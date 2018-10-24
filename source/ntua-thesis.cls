@@ -116,7 +116,7 @@
             \huge{\@institution} \\
             \large{\@department \\
             \@division \\
-            %\@other
+            %\@lab
             }}
         \end{center}
         \end{minipage}
